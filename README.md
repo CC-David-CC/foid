@@ -1,5 +1,7 @@
 # Foid v0.0.1 beta
 
+**[Meet Foid — live demo](https://cc-david-cc.github.io/foid/)**
+
 ![Foid greets, plays, types, talks and listens](./foid-demo.gif)
 
 Foid is a steerable, browser-rendered Rive companion for websites and desktop webviews. This beta includes the website module, an interactive example, and a local command-line host. The animation is a rough draft: turns use staged views, walking can slide, and talking is simulated rather than lip-synced.
