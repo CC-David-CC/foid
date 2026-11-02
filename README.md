@@ -32,6 +32,10 @@ For a website, copy this entire folder into e.g. `/foid/` on your server, then:
 
 A host element must have a nonzero width and height. The canvas is transparent; the example supplies a background separately. Each `mount` creates an independent instance. `mount(host, {worldId, sessionId, leaseMs, assetUrl})` accepts optional identifiers, lease of 1–30000 ms (default 30000), and a same-origin override for the `.riv` file. `ready` rejects if loading fails; call `dispose()` when removing the avatar. Under a strict Content Security Policy, the embed requires permission for its inline scoped style and WebAssembly.
 
+## Hosting on GitHub Pages
+
+This repository includes `index.html` and the required same-origin assets. In repository **Settings → Pages**, choose **Deploy from a branch**, select `main` and `/ (root)`, then save. After GitHub finishes the deployment, the example is available at `https://cc-david-cc.github.io/foid/`. The local CLI runs on your own machine and is not hosted by Pages.
+
 ## Steering
 
 - `blink()` requests a natural blink; reduced-motion or disconnected state suppresses it.
