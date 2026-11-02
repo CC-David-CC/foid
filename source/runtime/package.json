@@ -1,0 +1,19 @@
+{
+  "name": "foid-beta",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "vite build --config vite.foid-embed.config.mjs"
+  },
+  "dependencies": {
+    "@rive-app/webgl2": "2.49.0",
+    "vite": "8.3.5"
+  },
+  "devDependencies": {
+    "playwright": "1.64.1"
+  }
+}

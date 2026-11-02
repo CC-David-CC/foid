@@ -1,0 +1,79 @@
+{
+  "schema": 1,
+  "characters": {
+    "foid": {
+      "name": "Foid",
+      "species": "human",
+      "role": "Warm, expressive desktop companion \u2014 reading, drafting, and presenting results",
+      "artboard": "Foid",
+      "stateMachine": "CharacterMachine",
+      "viewModel": "Character",
+      "file": "foid.riv",
+      "approved_reference": "references/foid-approved.png",
+      "actions": {
+        "greet": {
+          "code": 1,
+          "phases": [],
+          "description": "A small friendly wave and rosy-cheeked smile; task-free personality, not fabricated work or a completion signal."
+        },
+        "acknowledge": {
+          "code": 2,
+          "phases": [
+            "succeeded"
+          ],
+          "description": "Brief task-specific completion acknowledgment; does not change global activity."
+        },
+        "cancel": {
+          "code": 3,
+          "phases": [
+            "cancelled"
+          ],
+          "description": "Quietly put the prop away; no success flourish."
+        },
+        "read": {
+          "code": 10,
+          "phases": [
+            "running"
+          ],
+          "description": "Read a separate little content card with attentive silver eyes; requires an actual running host reading task."
+        },
+        "type": {
+          "code": 11,
+          "phases": [
+            "running"
+          ],
+          "description": "A brief focused typing phrase at a separate laptop; represents an actual running drafting task, never injects keystrokes."
+        },
+        "explain": {
+          "code": 12,
+          "phases": [
+            "succeeded"
+          ],
+          "description": "Offer an available result card with a warm, visibly blushing smile and a small pointing gesture; requires a succeeded host task, not assumed correctness."
+        },
+        "drink": {
+          "code": 4,
+          "phases": [],
+          "description": "A personal drink gesture, independent of task state; requires the optional drink-v1 presentation capability."
+        },
+        "play_game": {
+          "code": 5,
+          "phases": [],
+          "description": "A personal game-controller gesture, independent of task state; requires the optional foid-play-v1 presentation capability."
+        },
+        "take_notes": {
+          "code": 6,
+          "phases": [
+            "running"
+          ],
+          "description": "Write on a notepad for a host-reported running task; requires the optional foid-notes-v1 presentation capability."
+        },
+        "cheer": {
+          "code": 7,
+          "phases": [],
+          "description": "A joyful personal cheer; requires the optional foid-cheer-v1 presentation capability."
+        }
+      }
+    }
+  }
+}

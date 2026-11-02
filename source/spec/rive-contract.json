@@ -1,0 +1,80 @@
+{
+  "schema": 1,
+  "artboard": "Per-character name in cast.json",
+  "stateMachine": "CharacterMachine",
+  "viewModel": "Character",
+  "properties": {
+    "statusCode": {
+      "type": "number",
+      "range": [
+        0,
+        5
+      ],
+      "meaning": "0 idle;1 listening;2 working;3 waiting;4 error;5 disconnected"
+    },
+    "conditionCode": {
+      "type": "number",
+      "range": [
+        0,
+        3
+      ],
+      "meaning": "0 unknown;1 ok;2 degraded;3 error; independent of task activity"
+    },
+    "lookX": {
+      "type": "number",
+      "range": [
+        -1,
+        1
+      ]
+    },
+    "lookY": {
+      "type": "number",
+      "range": [
+        -1,
+        1
+      ]
+    },
+    "headTilt": {
+      "type": "number",
+      "range": [
+        -1,
+        1
+      ]
+    },
+    "energy": {
+      "type": "number",
+      "range": [
+        0,
+        1
+      ],
+      "meaning": "Expressive amplitude, NOT task percentage"
+    },
+    "motionAmount": {
+      "type": "number",
+      "range": [
+        0,
+        1
+      ],
+      "meaning": "0 static, 1 full subtle rig motion; composition is Rive-owned"
+    },
+    "gestureCode": {
+      "type": "number",
+      "range": [
+        0,
+        12
+      ],
+      "meaning": "0 no gesture, character-specific codes from cast.json"
+    },
+    "reducedMotion": {
+      "type": "boolean"
+    },
+    "gesture": {
+      "type": "trigger"
+    },
+    "blink": {
+      "type": "trigger"
+    }
+  },
+  "reset_rule": "Changing status to disconnected or enabling reducedMotion must cancel an in-progress gesture to a truthful static pose.",
+  "motion_ownership": "Rive owns interpolation, blinking and character timelines; JS validates state and sends events, never re-implements pose animation."
+}

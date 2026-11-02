@@ -1,0 +1,4 @@
+import {defineConfig} from 'vite';
+import {resolve} from 'node:path';
+import {copyFileSync} from 'node:fs';
+export default defineConfig({base:'./',publicDir:false,plugins:[{name:'foid-embed-remove-demo-styles',enforce:'pre',transform(code,id){if(id.split('?')[0].endsWith('/src/mount.mjs'))return code.replace("import './style.css';",'');}},{name:'foid-embed-docs',closeBundle(){for(const name of ['README.md','example.html','cli.mjs','cli-view.html','showcase.html','foid-demo.gif','THIRD_PARTY_RIVE_LICENSE.txt'])copyFileSync(resolve('foid-embed',name),resolve('dist-foid-embed',name));}}],build:{outDir:'dist-foid-embed',emptyOutDir:true,assetsInlineLimit:0,rollupOptions:{input:resolve('foid-embed/index.mjs'),preserveEntrySignatures:'strict',output:{format:'es',entryFileNames:'index.mjs',assetFileNames:'assets/[name]-[hash][extname]'}}}});

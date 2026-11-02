@@ -1,0 +1,4 @@
+node_modules/
+source/runtime/dist-foid-embed/
+source/rive/build/
+.DS_Store

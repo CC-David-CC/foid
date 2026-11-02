@@ -1,0 +1,8 @@
+/** Presentation-only speech controls. These never inspect or play audio. */
+export const VISEMES=Object.freeze({auto:0,closed:1,open:2,wide:3,round:4,teeth:5});
+const GROUPS=Object.freeze({closed:['B','M','P','SIL','SP'],open:['AA','AE','AH','AW','AY','HH'],wide:['EH','ER','EY','IH','IY','Y','D','T','N','L','S','Z','SH','ZH','CH','JH','TH','DH','K','G','NG','R'],round:['AO','OW','OY','UH','UW','W'],teeth:['F','V']});
+const PHONEMES=Object.freeze(Object.fromEntries(Object.entries(GROUPS).flatMap(([shape,names])=>names.map(n=>[n,shape]))));
+/** Map ARPABET (optionally with vowel stress 0/1/2) to a coarse viseme. */
+export function phonemeToViseme(value){if(typeof value!=='string')throw new TypeError('Phoneme must be a string');const match=/^([A-Za-z]+)([012])?$/.exec(value.trim());if(!match)throw new TypeError('Invalid phoneme');const p=match[1].toUpperCase();if(!Object.hasOwn(PHONEMES,p))throw new TypeError('Unsupported phoneme');return PHONEMES[p];}
+/** Accept either a shape or one explicit phoneme; auto is a simulated cycle. */
+export function normalizeSpeech(input){if(!input||typeof input!=='object'||Array.isArray(input)||Object.getPrototypeOf(input)!==Object.prototype)throw new TypeError('Speech must be a plain object');const keys=Object.keys(input);if(keys.some(k=>!['speaking','viseme','phoneme'].includes(k))||typeof input.speaking!=='boolean'||('viseme'in input&&'phoneme'in input))throw new TypeError('Invalid speech control');let shape='auto';if('phoneme'in input)shape=phonemeToViseme(input.phoneme);else if('viseme'in input){if(typeof input.viseme!=='string'||!Object.hasOwn(VISEMES,input.viseme))throw new TypeError('Invalid viseme');shape=input.viseme;}return {speaking:input.speaking,visemeCode:input.speaking?VISEMES[shape]:0};}
